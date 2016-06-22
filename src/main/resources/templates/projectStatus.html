@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title th:text="${pagetype}"></title>
+</head>
+<body>
+
+<div th:if="${project.getProjecttype()=='waterfall'}">
+    <h1> The status for Waterfall project <span th: text="${project.getProjectname()}"></span> is <span th:text="${projectStatus.getPercentageComplete()}"></span></h1>
+</div>
+
+<div th:if="${project.getProjectType()=='scrum'}">
+    <h1> The status for Scrum Project <span th:text="${project.getProjectname()}"></span> is <span th:text="${projectStatus.getCompletionDate() }"></span></h1>
+</div>
+
+<div th:if="${project.getProjectType()=='kanban'}">
+    <div th:if="${project.getReady() &gt; 5}">
+        <h1> The status for Kanban Project <span th:text="${project.getProjectname()}"></span> is <span th:if="${ProjectStatus.getReady()}"></span></h1>
+    </div>
+    <div th:if="${project.getInprogress() &gt; 5}">
+        <h1> The status for Kanban Project <span th:text="${project.getProjectname()}"></span> is <span th:if="${ProjectStatus.getInprogress(}"></span></h1>
+    </div>
+    <div th:if="${project.getComplete() &gt; 5}">
+        <h1> The status for Kanban Project <span th:text="${project.getProjectname()}"></span> is <span th:if="${ProjectStatus.getComplete()}"></span></h1>
+    </div>
+
+
+</body>
+</html>

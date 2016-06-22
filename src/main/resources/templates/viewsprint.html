@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="bg-black">
+<head>
+
+    <title>Cmpe281project | View Sprint </title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- Theme style -->
+    <link href="../../css/AdminLTE.css" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <script>
+
+        function validateSprint() {
+
+
+            console.log("in function");
+
+            var a = document.forms["myForm"]["sprintname"].value;
+            var b = document.forms["myForm"]["startdate"].value;
+            var c = document.forms["myForm"]["enddate"].value;
+            var d = document.forms["myForm"]["projectname"].value;
+            var e = document.forms["myForm"]["username"].value;
+
+
+            if (a == null || a == "") {
+                alert("sprint must be filled out");
+                return false;
+            }
+
+
+            if (b == null || b == "") {
+                alert("startdate must be filled out");
+                return false;
+            }
+
+            if (c == null || c == "") {
+                alert("enddate must be filled out");
+                return false;
+            }
+
+            if (d == null || d == "") {
+                alert("projectname must be filled out");
+                return false;
+            }
+
+            if (e == null || e == "") {
+                alert("username must be filled out");
+                return false;
+            }
+
+
+        }
+
+    </script>
+
+
+</head>
+<body class="bg-black">
+
+< class="form-box" id="login-box">
+    <div class="header">Sprint Details</div>
+
+    <h4></h4>
+
+    <p th:text="'Hello, ' + ${username}"/>
+
+    <form action="#" name="myForm" onsubmit="return validateSprint()"
+          th:action="@{/cmpe281project/sprint/users(username=${username})(projectname=${projectname})}"
+          th:object="${sprint}" method="post">
+
+        <div class="body bg-gray">
+
+            <h4> Sprint List </h4>
+
+            <div class="form-group">
+                <input type="text" name="sprintName" class="form-control" th:field="*{sprintName}" placeholder="sprintName"/>
+            </div>
+
+            <div class="form-group">
+                <input type="date" name="startDate" class="form-control" th:field="*{startDate}" value="05/31/2015"
+                       placeholder="StartDate in mm-dd-yyyy"/>
+            </div>
+
+            <div class="form-group">
+                <input type="date" name="endDate" class="form-control" th:field="*{endDate}" value="05/31/2015"
+                       placeholder="EndDate in mm-dd-yyyy"/>
+            </div>
+
+            <div class="footer">
+                <button type="submit" class="btn bg-olive btn-block">Submit</button>
+                <a href="/cmpe281project/sprint/users" class="text-center">Create a new Sprint</a>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+
+</body>
+</html>
